@@ -27,3 +27,9 @@ const factorial = function (a) {
     return a * factorial(a - 1);
   }
 };
+
+let firstNumber;
+let operator;
+let secondNumber;
+
+function operate(a, b, operator) {}
