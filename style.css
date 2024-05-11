@@ -7,7 +7,6 @@ body {
   background-color: rgb(49, 49, 49);
 }
 button {
-  display: block;
   width: 100%;
   padding: 40px;
   background-color: rgb(48, 48, 48);
@@ -22,22 +21,22 @@ button {
 .container > div {
   border: 1px solid rgb(85, 85, 85);
 }
-.row {
-  display: flex;
-  color: white;
-}
 .screen {
   height: 130px;
   background-color: rgb(31, 31, 31);
   padding-bottom: 0;
 }
 
-.row > div {
-  flex-grow: 1;
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 button:hover {
   background-color: rgb(102, 102, 102);
 }
 .colored {
   background-color: rgb(43, 43, 43);
+}
+.span2 {
+  grid-column: span 2;
 }
