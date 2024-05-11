@@ -1,7 +1,17 @@
+* {
+  box-sizing: border-box;
+}
 body {
   display: flex;
   justify-content: center;
   background-color: rgb(49, 49, 49);
+}
+button {
+  display: block;
+  width: 100%;
+  padding: 40px;
+  background-color: rgb(48, 48, 48);
+  color: white;
 }
 .container {
   display: flex;
@@ -14,25 +24,20 @@ body {
 }
 .row {
   display: flex;
-  gap: 10px;
-  background-color: rgb(37, 37, 37);
   color: white;
 }
 .screen {
-  height: 100px;
-  background-color: black;
+  height: 130px;
+  background-color: rgb(31, 31, 31);
+  padding-bottom: 0;
 }
 
 .row > div {
   flex-grow: 1;
-  padding: 40px;
 }
-.row > div:hover {
-  background-color: green;
-}
-.screen {
-  padding-bottom: 0;
+button:hover {
+  background-color: rgb(102, 102, 102);
 }
 .colored {
-  background-color: rgb(27, 27, 27);
+  background-color: rgb(43, 43, 43);
 }

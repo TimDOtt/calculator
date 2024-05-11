@@ -32,4 +32,4 @@ let firstNumber;
 let operator;
 let secondNumber;
 
-function operate(a, b, operator) {}
+function operate(a, operator, b) {}
