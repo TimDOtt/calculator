@@ -1,4 +1,38 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(49, 49, 49);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+.container > div {
+  border: 1px solid rgb(85, 85, 85);
+}
 .row {
   display: flex;
   gap: 10px;
+  background-color: rgb(37, 37, 37);
+  color: white;
+}
+.screen {
+  height: 100px;
+  background-color: black;
+}
+
+.row > div {
+  flex-grow: 1;
+  padding: 40px;
+}
+.row > div:hover {
+  background-color: green;
+}
+.screen {
+  padding-bottom: 0;
+}
+.colored {
+  background-color: rgb(27, 27, 27);
 }
