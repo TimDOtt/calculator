@@ -28,8 +28,18 @@ const factorial = function (a) {
   }
 };
 
-let firstNumber;
+const btn = document.querySelectorAll("button");
+const screen = document.querySelector(".screen");
+
+let firstNumber = "";
 let operator;
 let secondNumber;
+
+btn.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    firstNumber += this.innerHTML;
+    screen.textContent = firstNumber;
+  });
+});
 
 function operate(a, operator, b) {}

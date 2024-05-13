@@ -17,26 +17,37 @@ button {
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  max-width: 442px;
+  flex-wrap: wrap;
+  word-break: break-all;
 }
-.container > div {
+.container > * {
   border: 1px solid rgb(85, 85, 85);
 }
 .screen {
-  height: 130px;
+  min-height: 130px;
   background-color: rgb(31, 31, 31);
   padding-bottom: 0;
+  color: white;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  margin: 0;
+  font-size: 3em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: right;
 }
-
 .row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+.span2 {
+  grid-column: span 2;
 }
 button:hover {
   background-color: rgb(102, 102, 102);
 }
 .colored {
   background-color: rgb(43, 43, 43);
-}
-.span2 {
-  grid-column: span 2;
 }
