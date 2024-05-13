@@ -61,14 +61,26 @@ btn.forEach((button) => {
         firstNumber = number;
         operator = this.textContent;
         break;
+      case "multiply":
+        firstNumber = number;
+        operator = this.textContent;
+        break;
+      case "add":
+        firstNumber = number;
+        operator = this.textContent;
+        break;
+      case "subtract":
+        firstNumber = number;
+        operator = this.textContent;
+        break;
+      case "equals":
+        firstNumber = number;
+        operator = "";
+        break;
 
       default:
         break;
     }
-    // if (id === "clear") {
-    //   number = "";
-    //   screen.textContent = 0;
-    // }
   });
 });
 
