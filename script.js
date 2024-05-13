@@ -37,9 +37,20 @@ let secondNumber;
 
 btn.forEach((button) => {
   button.addEventListener("click", function (e) {
-    firstNumber += this.innerHTML;
-    screen.textContent = firstNumber;
+    let type = isNumber(this.textContent);
+
+    if (type === true) {
+      firstNumber += this.textContent;
+      screen.textContent = firstNumber;
+    }
   });
 });
+
+function isNumber(value) {
+  if (parseInt(value).toString() === value) {
+    return true;
+  }
+  return false;
+}
 
 function operate(a, operator, b) {}
