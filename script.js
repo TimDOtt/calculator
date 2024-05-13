@@ -45,10 +45,30 @@ btn.forEach((button) => {
       screen.textContent = number;
     }
 
-    if (id === "clear") {
-      number = "";
-      screen.textContent = 0;
+    switch (id) {
+      case "clear":
+        number = "";
+        screen.textContent = 0;
+        break;
+      case "delete":
+        number = number.substring(0, number.length - 1);
+        screen.textContent = number;
+        if (number.length === 0) {
+          screen.textContent = "0";
+        }
+        break;
+      case "divide":
+        firstNumber = number;
+        operator = this.textContent;
+        break;
+
+      default:
+        break;
     }
+    // if (id === "clear") {
+    //   number = "";
+    //   screen.textContent = 0;
+    // }
   });
 });
 
