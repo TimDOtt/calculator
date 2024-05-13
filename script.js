@@ -31,17 +31,23 @@ const factorial = function (a) {
 const btn = document.querySelectorAll("button");
 const screen = document.querySelector(".screen");
 
-let firstNumber = "";
+let number = "";
+let firstNumber;
 let operator;
 let secondNumber;
 
 btn.forEach((button) => {
-  button.addEventListener("click", function (e) {
+  button.addEventListener("click", function () {
     let type = isNumber(this.textContent);
-
+    let id = this.getAttribute("id");
     if (type === true) {
-      firstNumber += this.textContent;
-      screen.textContent = firstNumber;
+      number += this.textContent;
+      screen.textContent = number;
+    }
+
+    if (id === "clear") {
+      number = "";
+      screen.textContent = 0;
     }
   });
 });
