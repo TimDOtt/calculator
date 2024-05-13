@@ -1,17 +1,16 @@
 const add = function (a, b) {
-  return a + b;
+  return parseInt(a) + parseInt(b);
+};
+const divide = function (a, b) {
+  return a / b;
 };
 
 const subtract = function (a, b) {
   return a - b;
 };
 
-const sum = function (arr) {
-  return arr.reduce((value, a) => value + a, 0);
-};
-
-const multiply = function (arr) {
-  return arr.reduce((value, a) => value * a);
+const multiply = function (a, b) {
+  return a * b;
 };
 
 const power = function (a, b) {
@@ -32,9 +31,9 @@ const btn = document.querySelectorAll("button");
 const screen = document.querySelector(".screen");
 
 let number = "";
-let firstNumber;
+let firstNumber = "";
 let operator;
-let secondNumber;
+let secondNumber = "";
 
 btn.forEach((button) => {
   button.addEventListener("click", function () {
@@ -48,6 +47,9 @@ btn.forEach((button) => {
     switch (id) {
       case "clear":
         number = "";
+        operator = "";
+        firstNumber = "";
+        secondNumber = "";
         screen.textContent = 0;
         break;
       case "delete":
@@ -58,24 +60,58 @@ btn.forEach((button) => {
         }
         break;
       case "divide":
-        firstNumber = number;
+        if (firstNumber != "") {
+          secondNumber = number;
+        } else {
+          firstNumber = number;
+        }
+        number = "";
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        screen.textContent = firstNumber;
+        secondNumber = "";
         operator = this.textContent;
+
         break;
       case "multiply":
-        firstNumber = number;
+        if (firstNumber != "") {
+          secondNumber = number;
+        } else {
+          firstNumber = number;
+        }
+        number = "";
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        screen.textContent = firstNumber;
+        secondNumber = "";
         operator = this.textContent;
         break;
       case "add":
-        firstNumber = number;
+        if (firstNumber != "") {
+          secondNumber = number;
+        } else {
+          firstNumber = number;
+        }
+        number = "";
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        screen.textContent = firstNumber;
+        secondNumber = "";
         operator = this.textContent;
         break;
       case "subtract":
-        firstNumber = number;
+        if (firstNumber != "") {
+          secondNumber = number;
+        } else {
+          firstNumber = number;
+        }
+        number = "";
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        screen.textContent = firstNumber;
+        secondNumber = "";
         operator = this.textContent;
         break;
       case "equals":
-        firstNumber = number;
+        // firstNumber = firstNumber operator secondNumber;
         operator = "";
+        screen.textContent = firstNumber;
         break;
 
       default:
@@ -91,4 +127,14 @@ function isNumber(value) {
   return false;
 }
 
-function operate(a, operator, b) {}
+function operate(a, operator, b) {
+  if (a != "" && b != "" && operator === "÷") {
+    return divide(a, b);
+  } else if (operator === "×") {
+    return multiply(a, b);
+  } else if (operator === "+") {
+    return add(a, b);
+  } else if ((operator = "−")) {
+    return subtract(a, b);
+  }
+}
