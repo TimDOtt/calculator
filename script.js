@@ -109,9 +109,16 @@ btn.forEach((button) => {
         operator = this.textContent;
         break;
       case "equals":
-        // firstNumber = firstNumber operator secondNumber;
-        operator = "";
+        if (firstNumber != "") {
+          secondNumber = number;
+        } else {
+          firstNumber = number;
+        }
+        number = "";
+        firstNumber = operate(firstNumber, operator, secondNumber);
         screen.textContent = firstNumber;
+        secondNumber = "";
+        operator = "";
         break;
 
       default:
@@ -136,5 +143,7 @@ function operate(a, operator, b) {
     return add(a, b);
   } else if ((operator = "−")) {
     return subtract(a, b);
+  } else {
+    return "";
   }
 }
