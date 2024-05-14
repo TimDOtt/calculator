@@ -103,7 +103,11 @@ btn.forEach((button) => {
           firstNumber = number;
         }
         number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
+        if (operator != "") {
+          firstNumber = operate(firstNumber, operator, secondNumber);
+        } else {
+          operator = this.textContent;
+        }
         screen.textContent = firstNumber;
         secondNumber = "";
         operator = this.textContent;
@@ -141,9 +145,9 @@ function operate(a, operator, b) {
     return multiply(a, b);
   } else if (operator === "+") {
     return add(a, b);
-  } else if ((operator = "−")) {
+  } else if (operator === "−") {
     return subtract(a, b);
   } else {
-    return "";
+    return firstNumber;
   }
 }
