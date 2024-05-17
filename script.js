@@ -60,22 +60,10 @@ btn.forEach((button) => {
         break;
 
       case "decimal":
-        if (number.includes(".")) {
-          number = number;
-        } else {
-          number += this.textContent;
-        }
-        screen.textContent = number;
+        decimal();
         break;
       case "equals":
-        if (firstNumber != "" && number != "") {
-          secondNumber = number;
-        } else if (number != "") {
-          firstNumber = number;
-        }
-        number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        screen.textContent = firstNumber;
+        equalize();
         break;
 
       default:
@@ -105,25 +93,10 @@ function checkCalcKey() {
         break;
       case ".":
         key = document.getElementById("decimal");
-        if (number.includes(".")) {
-          number = number;
-        } else {
-          number += key.textContent;
-        }
-        screen.textContent = number;
+        decimal();
         break;
       case "Enter":
-        if (firstNumber != "" && number != "") {
-          secondNumber = number;
-        } else if (number != "") {
-          firstNumber = number;
-        }
-        number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        screen.textContent = firstNumber;
-        console.log(operator);
-        console.log(firstNumber);
-        console.log(secondNumber);
+        equalize();
         break;
       case "+":
         key = document.getElementById("add");
@@ -169,7 +142,24 @@ function backspace() {
     secondNumber = "";
   }
 }
-
+function equalize() {
+  if (firstNumber != "" && number != "") {
+    secondNumber = number;
+  } else if (number != "") {
+    firstNumber = number;
+  }
+  number = "";
+  firstNumber = operate(firstNumber, operator, secondNumber);
+  screen.textContent = firstNumber;
+}
+function decimal() {
+  if (number.includes(".")) {
+    number = number;
+  } else {
+    number += key.textContent;
+  }
+  screen.textContent = number;
+}
 function manipulateNumber(a) {
   if (firstNumber != "") {
     secondNumber = number;
