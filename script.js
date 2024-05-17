@@ -46,52 +46,20 @@ btn.forEach((button) => {
         }
         break;
       case "divide":
-        if (firstNumber != "") {
-          secondNumber = number;
-        } else {
-          firstNumber = number;
-        }
-        number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        screen.textContent = firstNumber;
-        secondNumber = "";
+        manipulateNumber(number);
         operator = this.textContent;
 
         break;
       case "multiply":
-        if (firstNumber != "") {
-          secondNumber = number;
-        } else {
-          firstNumber = number;
-        }
-        number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        screen.textContent = firstNumber;
-        secondNumber = "";
+        manipulateNumber(number);
         operator = this.textContent;
         break;
       case "add":
-        if (firstNumber != "") {
-          secondNumber = number;
-        } else {
-          firstNumber = number;
-        }
-        number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        screen.textContent = firstNumber;
-        secondNumber = "";
+        manipulateNumber(number);
         operator = this.textContent;
         break;
       case "subtract":
-        if (firstNumber != "") {
-          secondNumber = number;
-        } else {
-          firstNumber = number;
-        }
-        number = "";
-        firstNumber = operate(firstNumber, operator, secondNumber);
-        screen.textContent = firstNumber;
-        secondNumber = "";
+        manipulateNumber(number);
         operator = this.textContent;
         break;
 
@@ -120,6 +88,17 @@ btn.forEach((button) => {
   });
 });
 
+function manipulateNumber(a) {
+  if (firstNumber != "") {
+    secondNumber = number;
+  } else {
+    firstNumber = number;
+  }
+  number = "";
+  firstNumber = operate(firstNumber, operator, secondNumber);
+  screen.textContent = firstNumber;
+  secondNumber = "";
+}
 function isNumber(value) {
   if (parseInt(value).toString() === value) {
     return true;
