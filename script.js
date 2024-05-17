@@ -26,8 +26,12 @@ btn.forEach((button) => {
     let type = isNumber(this.textContent);
     let id = this.getAttribute("id");
     if (type === true) {
-      number += this.textContent;
-      screen.textContent = number;
+      if (number.length < 17) {
+        number += this.textContent;
+        screen.textContent = number;
+      } else {
+        screen.innerText = number;
+      }
     }
 
     switch (id) {
