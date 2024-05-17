@@ -22,7 +22,7 @@ let operator;
 let secondNumber = "";
 
 btn.forEach((button) => {
-  button.addEventListener("click", function () {
+  button.addEventListener("mousedown", function () {
     let type = isNumber(this.textContent);
     let id = this.getAttribute("id");
     if (type === true) {
@@ -36,18 +36,10 @@ btn.forEach((button) => {
 
     switch (id) {
       case "clear":
-        number = "";
-        operator = "";
-        firstNumber = "";
-        secondNumber = "";
-        screen.textContent = 0;
+        clearAll();
         break;
       case "delete":
-        number = number.substring(0, number.length - 1);
-        screen.textContent = number;
-        if (number.length === 0) {
-          screen.textContent = "0";
-        }
+        backspace();
         break;
       case "divide":
         manipulateNumber(number);
@@ -91,6 +83,92 @@ btn.forEach((button) => {
     }
   });
 });
+function getNumber(e) {
+  key = document.getElementById(e.key);
+  number += key.textContent;
+  screen.textContent = number;
+}
+function checkCalcKey() {
+  document.addEventListener("keydown", (e) => {
+    switch (e.key) {
+      case "9":
+      case "8":
+      case "7":
+      case "6":
+      case "5":
+      case "4":
+      case "3":
+      case "2":
+      case "1":
+      case "0":
+        getNumber(e);
+        break;
+      case ".":
+        key = document.getElementById("decimal");
+        if (number.includes(".")) {
+          number = number;
+        } else {
+          number += key.textContent;
+        }
+        screen.textContent = number;
+        break;
+      case "Enter":
+        if (firstNumber != "" && number != "") {
+          secondNumber = number;
+        } else if (number != "") {
+          firstNumber = number;
+        }
+        number = "";
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        screen.textContent = firstNumber;
+        console.log(operator);
+        console.log(firstNumber);
+        console.log(secondNumber);
+        break;
+      case "+":
+        key = document.getElementById("add");
+        manipulateNumber(number);
+        operator = key.textContent;
+        break;
+      case "-":
+        key = document.getElementById("subtract");
+        manipulateNumber(number);
+        operator = key.textContent;
+        break;
+      case "*":
+        key = document.getElementById("multiply");
+        manipulateNumber(number);
+        operator = key.textContent;
+        break;
+      case "/":
+        key = document.getElementById("divide");
+        manipulateNumber(number);
+        operator = key.textContent;
+        break;
+      case "Backspace":
+        backspace();
+        break;
+      case "Escape":
+        clearAll();
+    }
+  });
+}
+function clearAll() {
+  number = "";
+  operator = "";
+  firstNumber = "";
+  secondNumber = "";
+  screen.textContent = "0";
+}
+function backspace() {
+  number = number.substring(0, number.length - 1);
+  screen.textContent = number;
+  if (number.length === 0) {
+    screen.textContent = "0";
+    firstNumber = "";
+    secondNumber = "";
+  }
+}
 
 function manipulateNumber(a) {
   if (firstNumber != "") {
@@ -137,3 +215,5 @@ function operate(a, operator, b) {
     return firstNumber;
   }
 }
+
+checkCalcKey();
