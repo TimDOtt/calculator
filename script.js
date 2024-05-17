@@ -1,5 +1,5 @@
 const add = function (a, b) {
-  return parseInt(a) + parseInt(b);
+  return parseFloat(a) + parseFloat(b);
 };
 const divide = function (a, b) {
   return a / b;
@@ -11,20 +11,6 @@ const subtract = function (a, b) {
 
 const multiply = function (a, b) {
   return a * b;
-};
-
-const power = function (a, b) {
-  return a ** b;
-};
-
-const factorial = function (a) {
-  if (a < 0) {
-    return -1;
-  } else if (a === 0) {
-    return 1;
-  } else {
-    return a * factorial(a - 1);
-  }
 };
 
 const btn = document.querySelectorAll("button");
@@ -103,11 +89,7 @@ btn.forEach((button) => {
           firstNumber = number;
         }
         number = "";
-        if (operator != "") {
-          firstNumber = operate(firstNumber, operator, secondNumber);
-        } else {
-          operator = this.textContent;
-        }
+        firstNumber = operate(firstNumber, operator, secondNumber);
         screen.textContent = firstNumber;
         secondNumber = "";
         operator = this.textContent;
@@ -139,13 +121,25 @@ function isNumber(value) {
 function operate(a, operator, b) {
   if (a != "" && b != "") {
     if (operator === "÷") {
-      return divide(a, b);
+      if (b == 0) {
+        return "You forget yourself";
+      } else {
+        return divide(a, b)
+          .toFixed(2)
+          .replace(/[.,]00$/, "");
+      }
     } else if (operator === "×") {
-      return multiply(a, b);
+      return multiply(a, b)
+        .toFixed(2)
+        .replace(/[.,]00$/, "");
     } else if (operator === "+") {
-      return add(a, b);
+      return add(a, b)
+        .toFixed(2)
+        .replace(/[.,]00$/, "");
     } else if (operator === "−") {
-      return subtract(a, b);
+      return subtract(a, b)
+        .toFixed(2)
+        .replace(/[.,]00$/, "");
     }
   } else {
     return firstNumber;
