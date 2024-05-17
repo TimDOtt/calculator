@@ -94,6 +94,15 @@ btn.forEach((button) => {
         secondNumber = "";
         operator = this.textContent;
         break;
+
+      case "decimal":
+        if (number.includes(".")) {
+          number = number;
+        } else {
+          number += this.textContent;
+        }
+        screen.textContent = number;
+        break;
       case "equals":
         if (firstNumber != "" && number != "") {
           secondNumber = number;
