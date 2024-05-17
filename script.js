@@ -113,16 +113,14 @@ btn.forEach((button) => {
         operator = this.textContent;
         break;
       case "equals":
-        if (firstNumber != "") {
+        if (firstNumber != "" && number != "") {
           secondNumber = number;
-        } else {
+        } else if (number != "") {
           firstNumber = number;
         }
         number = "";
         firstNumber = operate(firstNumber, operator, secondNumber);
         screen.textContent = firstNumber;
-        secondNumber = "";
-        operator = "";
         break;
 
       default:
@@ -139,14 +137,16 @@ function isNumber(value) {
 }
 
 function operate(a, operator, b) {
-  if (a != "" && b != "" && operator === "÷") {
-    return divide(a, b);
-  } else if (operator === "×") {
-    return multiply(a, b);
-  } else if (operator === "+") {
-    return add(a, b);
-  } else if (operator === "−") {
-    return subtract(a, b);
+  if (a != "" && b != "") {
+    if (operator === "÷") {
+      return divide(a, b);
+    } else if (operator === "×") {
+      return multiply(a, b);
+    } else if (operator === "+") {
+      return add(a, b);
+    } else if (operator === "−") {
+      return subtract(a, b);
+    }
   } else {
     return firstNumber;
   }
