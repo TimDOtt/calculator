@@ -25,6 +25,9 @@ btn.forEach((button) => {
   button.addEventListener("mousedown", function () {
     let type = isNumber(this.textContent);
     let id = this.getAttribute("id");
+    if (screen.textContent === "You forget yourself") {
+      clearAll();
+    }
     if (type === true) {
       if (number.length < 17) {
         number += this.textContent;
@@ -72,6 +75,9 @@ btn.forEach((button) => {
   });
 });
 function getNumber(e) {
+  if (screen.textContent === "You forget yourself") {
+    clearAll();
+  }
   key = document.getElementById(e.key);
   if (number.length < 17) {
     number += key.textContent;
@@ -181,7 +187,11 @@ function isNumber(value) {
   }
   return false;
 }
-
+function dividedByZero() {
+  if (screen.textContent === "You forget yourself") {
+    clearAll();
+  }
+}
 function operate(a, operator, b) {
   if (a != "" && b != "") {
     if (operator === "÷") {
@@ -210,4 +220,5 @@ function operate(a, operator, b) {
   }
 }
 
+dividedByZero();
 checkCalcKey();
