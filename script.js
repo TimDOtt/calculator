@@ -73,8 +73,12 @@ btn.forEach((button) => {
 });
 function getNumber(e) {
   key = document.getElementById(e.key);
-  number += key.textContent;
-  screen.textContent = number;
+  if (number.length < 17) {
+    number += key.textContent;
+    screen.textContent = number;
+  } else {
+    screen.innerText = number;
+  }
 }
 function checkCalcKey() {
   document.addEventListener("keydown", (e) => {
@@ -153,7 +157,7 @@ function equalize() {
   screen.textContent = firstNumber;
 }
 function decimal() {
-  if (number.includes(".")) {
+  if (number.includes(".") || number.length === 17) {
     number = number;
   } else {
     number += key.textContent;
