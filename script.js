@@ -38,38 +38,24 @@ btn.forEach((button) => {
     }
 
     switch (id) {
+      case "divide":
+      case "multiply":
+      case "add":
+      case "subtract":
+        manipulateNumber(number);
+        operator = this.textContent;
+        break;
       case "clear":
         clearAll();
         break;
       case "delete":
         backspace();
         break;
-      case "divide":
-        manipulateNumber(number);
-        operator = this.textContent;
-
-        break;
-      case "multiply":
-        manipulateNumber(number);
-        operator = this.textContent;
-        break;
-      case "add":
-        manipulateNumber(number);
-        operator = this.textContent;
-        break;
-      case "subtract":
-        manipulateNumber(number);
-        operator = this.textContent;
-        break;
-
       case "decimal":
         decimal();
         break;
       case "equals":
         equalize();
-        break;
-
-      default:
         break;
     }
   });
